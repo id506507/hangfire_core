@@ -3,7 +3,7 @@
 Setup
 =============
 
-#Installing
+Installing
 -------------
 
 `Install-Package Hangfire`
