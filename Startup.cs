@@ -21,7 +21,7 @@ namespace hangfire_core
         {
             //Configuration = configuration;
             GlobalConfiguration.Configuration.UseSqlServerStorage("Data Source=WOWCOMPUTER\\SQLEXPRESS;Initial Catalog=tempdb;Integrated Security=True;");
-            BackgroundJob.Enqueue(() => FireAndForget());
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -60,7 +60,14 @@ namespace hangfire_core
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            //Hangfire
+            //Fire and forget
+            BackgroundJob.Enqueue(() => FireAndForget());
+            //Scheduled jobs
+            BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromMilliseconds(10000));
+            //Recurring jobs
+            RecurringJob.AddOrUpdate(() => Recurring(), Cron.Daily);
+            //Hangfire
             //Hangfire
             app.UseHangfireDashboard();
             //Hangfire
@@ -74,8 +81,16 @@ namespace hangfire_core
         }
         public void FireAndForget()
         {
-            Thread.Sleep(100000);
-            Console.WriteLine("HHHHello");
+            Thread.Sleep(100);
+            Console.WriteLine("Fire and forget");
+        }
+        public void ScheduleJob()
+        {
+            Console.WriteLine("Schedule Job");
+        }
+        public void Recurring()
+        {
+            Console.WriteLine("Recurring Job");
         }
     }
 }
