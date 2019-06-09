@@ -1,10 +1,6 @@
-# hangfire_core
+# Setup
 
-Setup
-=============
-
-Installing
--------------
+##Installing
 
 `Install-Package Hangfire`
 
