@@ -1,6 +1,8 @@
 # hangfire_core
-##Setup
-###Installing
+
+#Setup
+
+#Installing
 `Install-Package Hangfire`
 
 `Install-Package Hangfire.Core`
@@ -20,7 +22,7 @@ public Startup(IConfiguration configuration)
         }
 public void ConfigureServices(IServiceCollection services)
         {
-			services.AddHangfire(x => x.UseSqlServerStorage("connect string"));
+	    services.AddHangfire(x => x.UseSqlServerStorage("connect string"));
             services.AddHangfireServer();
         }
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
