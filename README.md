@@ -32,6 +32,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
      BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromMilliseconds(10000));
      //Recurring jobs
      RecurringJob.AddOrUpdate(() => Recurring(), Cron.Daily);
+     RecurringJob.AddOrUpdate("id2",() => Recurring2(), Cron.Minutely);
 
      app.UseHangfireDashboard();
 }
@@ -47,6 +48,10 @@ public void ScheduleJob()
 public void Recurring()
 {
     Console.WriteLine("Recurring Job");
+}
+public void Recurring2()
+{
+    Console.WriteLine("Recurring Job2");
 }
 
 ```
