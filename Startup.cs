@@ -16,14 +16,14 @@ namespace test
     public Startup(IConfiguration configuration)
     {
       //Configuration = configuration;
-      GlobalConfiguration.Configuration.UseSqlServerStorage("Data Source=HKCC-WITITW01\\SQLEXPRESS;Initial Catalog=test;Integrated Security=True;");
+      GlobalConfiguration.Configuration.UseSqlServerStorage("connect string");
       
     }
 
 
     public void Configuration(IGlobalConfiguration globalConfiguration)
     {
-      globalConfiguration.UseSqlServerStorage("Data Source=HKCC-WITITW01\\SQLEXPRESS;Initial Catalog=test;Integrated Security=True;").UseHangfireHttpJob();
+      globalConfiguration.UseSqlServerStorage("connect string").UseHangfireHttpJob();
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.
