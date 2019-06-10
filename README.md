@@ -75,6 +75,7 @@ public void Recurring2()
 # HttpJob
 ## Startup.cs
 ```csharp
+using Hangfire.HttpJob;
 public void Configuration(IGlobalConfiguration globalConfiguration)
 {
     globalConfiguration.UseSqlServerStorage("connect string").UseHangfireHttpJob();
