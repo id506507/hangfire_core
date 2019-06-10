@@ -82,7 +82,7 @@ namespace hangfire_core
         }
         public void FireAndForget()
         {
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             Console.WriteLine("Fire and forget");
         }
         public void ScheduleJob()
