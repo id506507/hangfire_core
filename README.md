@@ -71,6 +71,23 @@ public void Recurring2()
 * [在Asp.Net Core中使用DI的方式使用Hangfire構建後台執行腳本- James.Ying - 博客園](https://www.cnblogs.com/inday/p/hangfire-di-on-dot-net-core.html)
 * [Hangfire中文文檔](https://www.bookstack.cn/read/Hangfire-zh-official/4.md)
 * [[Hangfire]01-使用hangfire來執行background job](https://bryanyu.github.io/2018/09/03/Hangfire01/)
+#HttpJob
+##Startup.cs
+```csharp
+public void Configuration(IGlobalConfiguration globalConfiguration)
+{
+    globalConfiguration.UseSqlServerStorage("connect string").UseHangfireHttpJob();
+}
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddHangfireHttpJobAgent();
+}
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseHangfireHttpJobAgent();
+}
+
+```
 ## HttpJob Reference
 * [開源分佈式Job系統,調度與業務分離-HttpJob.Agent組件介紹以及如何使用](https://article.itxueyuan.com/98PZkR)
 * [Hangfire.HttpJob](https://github.com/yuzd/Hangfire.HttpJob)
