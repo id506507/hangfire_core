@@ -64,9 +64,10 @@ namespace hangfire_core
             //Fire and forget
             BackgroundJob.Enqueue(() => FireAndForget());
             //Scheduled jobs
-            BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromMilliseconds(10000));
+            BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromSeconds(10));
             //Recurring jobs
-            RecurringJob.AddOrUpdate(() => Recurring(), Cron.Daily);
+            RecurringJob.AddOrUpdate(() => Recurring(), Cron.Minutely);
+            RecurringJob.AddOrUpdate("id2",() => Recurring2(), Cron.Minutely);
             //Hangfire
             //Hangfire
             app.UseHangfireDashboard();
@@ -91,6 +92,10 @@ namespace hangfire_core
         public void Recurring()
         {
             Console.WriteLine("Recurring Job");
+        }
+        public void Recurring2()
+        {
+          Console.WriteLine("Recurring Job2");
         }
     }
 }
