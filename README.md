@@ -88,7 +88,15 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseHangfireHttpJobAgent();
 }
-
+```
+##appsetting.json
+```
+{
+  "JobAgent": {
+    "Enabled": true,
+    "SitemapUrl": "/jobagent"
+  }
+}
 ```
 ### Step
 1. 在project裡創一個.cs，.cs需要inherit JobAgent的OnStart()、OnStop()、OnException<br>
