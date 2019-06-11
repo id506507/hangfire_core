@@ -149,8 +149,8 @@ protected override async Task OnStart(JobContext jobContext)
   "AgentClass": "test.testJob,test" //.cs名稱(namespace.class name,project name)
 }
 ```
-![DB](https://i.imgur.com/EhNkFPZ.png)
-namespace.class name,project name例子
+![DB](https://i.imgur.com/EhNkFPZ.png)<br>
+namespace.class name,project name例子=test.Startup,test
 #### Recurring job
 ```
 {
