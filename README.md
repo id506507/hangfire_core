@@ -110,13 +110,29 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   "EnableRetry": false,                     //失敗時是否需要重試
   "SendSucMail": false,                     //成功時send email通知
   "SendFaiMail": true,                      //失敗時send email通知
-  "Mail": "1877682825@qq.com",              //email address
-  "AgentClass": "TestHangfireAgent.Jobs.TestJob,TestHangfireAgent" //namespace.class name,project name
+  "Mail": "",              //email address
+  "AgentClass": "test.testJob,test" //namespace.class name,project name
 }
 ```
 #### Recurring job
 ```
-
+{
+  "JobName": "",
+  "Method": "GET",
+  "ContentType": "application/json",
+  "Url": "http://",
+  "Data": {},
+  "Timeout": 5000,
+  "Cron": "",                               //重覆時間，可以先用「Corn表達式生成」
+  "BasicUserName": "",
+  "BasicPassword": "",
+  "QueueName": "",
+  "EnableRetry": false,
+  "SendSucMail": false,
+  "SendFaiMail": true,
+  "Mail": "",
+  "AgentClass": ""
+}
 ```
 ## HttpJob Reference
 * [開源分佈式Job系統,調度與業務分離-HttpJob.Agent組件介紹以及如何使用](https://article.itxueyuan.com/98PZkR)
