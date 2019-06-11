@@ -100,6 +100,24 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 ```
 ### Step
 1. 在project裡創一個.cs，.cs需要inherit JobAgent的OnStart()、OnStop()、OnException()
+#### Test.cs
+```
+protected override async Task OnStart(JobContext jobContext)
+    {
+      await Task.Delay(100);
+      System.Diagnostics.Debug.WriteLine("This is a recurring job2");
+      System.Diagnostics.Debug.WriteLine(System.DateTime.Now.ToString("F"));
+
+    }
+    protected override void OnException(Exception ex)
+    {
+      throw new NotImplementedException();
+    }
+    protected override void OnStop(JobContext jobContext)
+    {
+      throw new NotImplementedException();
+    }
+```
 2. 在Hangfire新增job
 3. 填寫參數如下：
 #### Scheduled Job
