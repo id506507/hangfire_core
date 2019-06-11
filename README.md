@@ -90,6 +90,35 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 
 ```
+### Step
+1. 在project裡創一個.cs，.cs需要inherit JobAgent的OnStart()、OnStop()、OnException<br>
+2. 在Hangfire新增job
+3. 填寫參數如下：
+#### Scheduled Job
+```
+{
+  "JobName": "TestJob",                     //Job的名字，不一定是.cs名稱
+  "Method": "POST",                         //POST or GET 
+  "ContentType": "application/json",        
+  "Url": "http://localhost:5002/jobagent",  //Agent的地址，在之前appsetting.json裡已經設定好
+  "DelayFromMinutes": -1,                   //-1:手動，0:立即執行，>1:延遲執行
+  "Data": "",                               //當method=post時指定post的內容
+  "Timeout": 5000,                          //http超時設定
+  "BasicUserName": "",                  //Agent设置的basicAuth
+  "BasicPassword": "",                //Agent设置的basicAuth
+
+  "EnableRetry": false,                     //失敗時是否需要重試
+  "SendSucMail": false,                     //成功時send email通知
+  "SendFaiMail": true,                      //失敗時send email通知
+  "Mail": "1877682825@qq.com",              //email address
+  "AgentClass": "TestHangfireAgent.Jobs.TestJob,TestHangfireAgent" //namespace.class name,project name
+}
+```
+#### Recurring job
+```
+
+```
 ## HttpJob Reference
 * [開源分佈式Job系統,調度與業務分離-HttpJob.Agent組件介紹以及如何使用](https://article.itxueyuan.com/98PZkR)
 * [Hangfire.HttpJob](https://github.com/yuzd/Hangfire.HttpJob)
+* [02.如何创建一个周期性的HttpJob](https://github.com/yuzd/Hangfire.HttpJob/wiki/02.%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%91%A8%E6%9C%9F%E6%80%A7%E7%9A%84HttpJob)
