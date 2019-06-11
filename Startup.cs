@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Hangfire.HttpJob.Agent;
 
 
 namespace test
@@ -16,14 +17,13 @@ namespace test
     public Startup(IConfiguration configuration)
     {
       //Configuration = configuration;
-      GlobalConfiguration.Configuration.UseSqlServerStorage("connect string");
-      
+      GlobalConfiguration.Configuration.UseSqlServerStorage("Data Source=HKCC-WITITW01\\SQLEXPRESS;Initial Catalog=test;Integrated Security=True;");
     }
 
 
     public void Configuration(IGlobalConfiguration globalConfiguration)
     {
-      globalConfiguration.UseSqlServerStorage("connect string").UseHangfireHttpJob();
+      globalConfiguration.UseSqlServerStorage("Data Source=HKCC-WITITW01\\SQLEXPRESS;Initial Catalog=test;Integrated Security=True;").UseHangfireHttpJob();
     }
 
     // This method gets called by the runtime. Use this method to add services to the container.
@@ -42,6 +42,9 @@ namespace test
       services.AddHangfire(Configuration);
       services.AddHangfireServer();
       //Hangfire
+      //HttpJob
+      services.AddHangfireHttpJobAgent();
+      //HttpJob
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       
 
@@ -67,16 +70,17 @@ namespace test
       });
       //Hangfire
       //Scheduled jobs
-      BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromSeconds(10));
+      //BackgroundJob.Schedule(() => ScheduleJob(), TimeSpan.FromSeconds(10));
       //Fire and forget
-      BackgroundJob.Enqueue(() => FireAndForget());
+      //BackgroundJob.Enqueue(() => FireAndForget());
       //Recurring jobs
-      RecurringJob.AddOrUpdate(() => Recurring(), Cron.Minutely);
-      RecurringJob.AddOrUpdate("id2",() => Recurring2(), Cron.Minutely);
+      //RecurringJob.AddOrUpdate(() => Recurring(), Cron.Minutely);
+      //RecurringJob.AddOrUpdate("id2",() => Recurring_job(), Cron.Minutely);
   
       app.UseHangfireServer();
       app.UseHangfireDashboard("/hangfire");
 
+      app.UseHangfireHttpJobAgent();
 
 
 
@@ -91,26 +95,28 @@ namespace test
 
 
     }
-
+/*
     public void FireAndForget()
     {
       //Thread.Sleep(10000);
-      Console.WriteLine("Fire and forget");
+      System.Diagnostics.Debug.WriteLine("Fire And Forget");
     }
     public void ScheduleJob()
     {
-      Console.WriteLine("Schedule Job");
+      System.Diagnostics.Debug.WriteLine("Schedule Job");
     }
+    
     public void Recurring()
     {
-      Console.WriteLine("Recurring Job");
+      System.Diagnostics.Debug.WriteLine("Recurring Job");
     }
-
-    public void Recurring2()
+    
+    public void Recurring_job()
     {
-      Console.WriteLine("Recurring Job2");
+      System.Diagnostics.Debug.WriteLine("Output Recurring Job");
+      System.Diagnostics.Debug.WriteLine(System.DateTime.Now.ToString("F"));
     }
-
+    */
   }
 
 }
