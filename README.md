@@ -146,7 +146,7 @@ protected override async Task OnStart(JobContext jobContext)
   "SendSucMail": false,                     //成功時send email通知
   "SendFaiMail": true,                      //失敗時send email通知
   "Mail": "",              //email address
-  "AgentClass": "test.testJob,test" //namespace.class name,project name
+  "AgentClass": "test.testJob,test" //.cs名稱(namespace.class name,project name)
 }
 ```
 #### Recurring job
@@ -158,7 +158,7 @@ protected override async Task OnStart(JobContext jobContext)
   "Url": "http://",
   "Data": {},
   "Timeout": 5000,
-  "Cron": "",                               //重覆時間，可以先用「Corn表達式生成」
+  "Cron": "",                               //重覆的時間，可以先用「Corn表達式生成」
   "BasicUserName": "",
   "BasicPassword": "",
   "QueueName": "",
