@@ -38,7 +38,7 @@ namespace test
 
 
       //Hangfire
-      //services.AddHangfire(x => x.UseSqlServerStorage("Data Source=HKCC-WITITW01\\SQLEXPRESS;Initial Catalog=test;Integrated Security=True;"));
+      //services.AddHangfire(x => x.UseSqlServerStorage("connect string"));
       services.AddHangfire(Configuration);
       services.AddHangfireServer();
       //Hangfire
