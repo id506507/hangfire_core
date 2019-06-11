@@ -89,7 +89,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHangfireHttpJobAgent();
 }
 ```
-##appsetting.json
+## appsetting.json
 ```
 {
   "JobAgent": {
