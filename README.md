@@ -73,6 +73,10 @@ public void Recurring2()
 * [[Hangfire]01-使用hangfire來執行background job](https://bryanyu.github.io/2018/09/03/Hangfire01/)
 
 # HttpJob
+### Installing
+`Install-Package Hangfire.Agent`
+
+`Install-Package Hangfire.Client`
 ## Startup.cs
 ```csharp
 using Hangfire.HttpJob;
