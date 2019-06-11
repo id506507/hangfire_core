@@ -1,9 +1,6 @@
 # Setup
 
 ### Installing
-
-`Install-Package Hangfire`
-
 `Install-Package Hangfire.Core`
 
 `Install-Package Hangfire.SqlServer`
