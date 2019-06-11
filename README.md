@@ -86,7 +86,15 @@ public void ConfigureServices(IServiceCollection services)
 }
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
-    app.UseHangfireHttpJobAgent();
+      var hangfireStartUpPath = "/job";
+      app.UseHangfireDashboard(hangfireStartUpPath,new DashboardOptions {
+        AppPath = "#",
+        DisplayStorageConnectionString = false,
+        IsReadOnlyFunc = Context => false,
+      });
+      app.UseHangfireServer();
+      app.UseHangfireDashboard("/hangfire");
+      app.UseHangfireHttpJobAgent();
 }
 ```
 ## appsetting.json
