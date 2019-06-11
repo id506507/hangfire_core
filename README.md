@@ -74,9 +74,9 @@ public void Recurring2()
 
 # HttpJob
 ### Installing
-`Install-Package Hangfire.Agent`
+`Install-Package Hangfire.HttpJob.Agent`
 
-`Install-Package Hangfire.Client`
+`Install-Package Hangfire.HttpJob.Client`
 ## Startup.cs
 ```csharp
 using Hangfire.HttpJob;
