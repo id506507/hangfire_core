@@ -158,7 +158,7 @@ protected override async Task OnStart(JobContext jobContext)
   "Url": "http://",
   "Data": {},
   "Timeout": 5000,
-  "Cron": "",                               //重覆的時間，可以先用「Corn表達式生成」
+  "Cron": "",                               //重覆頻率，可以先用「Corn表達式生成」或者用網路上的Cron Expression Generator
   "BasicUserName": "",
   "BasicPassword": "",
   "QueueName": "",
