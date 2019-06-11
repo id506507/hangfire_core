@@ -99,7 +99,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 ### Step
-1. 在project裡創一個.cs，.cs需要inherit JobAgent的OnStart()、OnStop()、OnException<br>
+1. 在project裡創一個.cs，.cs需要inherit JobAgent的OnStart()、OnStop()、OnException()
 2. 在Hangfire新增job
 3. 填寫參數如下：
 #### Scheduled Job
@@ -142,6 +142,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   "AgentClass": ""
 }
 ```
+4. 在Startup.cs新增的job都沒辦法使用HttpJob的暫停或開始，也沒法得到狀態。但.cs的都可以正常運作
 ## HttpJob Reference
 * [開源分佈式Job系統,調度與業務分離-HttpJob.Agent組件介紹以及如何使用](https://article.itxueyuan.com/98PZkR)
 * [Hangfire.HttpJob](https://github.com/yuzd/Hangfire.HttpJob)
